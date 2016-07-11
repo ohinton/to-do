@@ -1,18 +1,6 @@
-<h1>To Do</h1>
-
-<p>Here are all your tasks:</p>
+<h1>To Do List Generator</h1>
 
 <ul>
-  <% @tasks.each() do |task| %>
-    <li><%= task.description() %></li>
-  <% end %>
+  <a href='/lists/new'><li>Add a List</li></a>
+  <a href='/lists'><li>See All Lists</li></a>
 </ul>
-
-<p>Create a new task:</p>
-
-<form action="/confirmation" method="post">
-  <label for="description">Task Description</label>
-  <input id="description" name="description" type="text">
-
-  <button type="submit">Add task</button>
-</form>

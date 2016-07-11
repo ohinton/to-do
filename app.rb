@@ -1,16 +1,20 @@
 require("sinatra")
 require("sinatra/reloader")
 also_reload("lib/**/*.rb")
-require("./lib/to_do")
+require("./lib/task")
+require("./lib/list")
 
 get("/") do
-  @tasks = Task.all()
   erb(:index)
 end
 
-post("/confirmation") do
-  description = params.fetch("description")
-  task = Task.new(description)
-  task.save()
-  erb(:confirmation)
+get("/lists/new") do
+  erb(:list_form)
+end
+
+post("/lists") do
+  list_name = params.fetch("list_name")
+  list = List.new(:name => list_name, :id => nil)
+  list.save()
+  erb(:list_confirmation)
 end
